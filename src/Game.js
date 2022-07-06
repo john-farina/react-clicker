@@ -1,11 +1,15 @@
 import { useState } from 'react';
-import './game.css';
+import './index.css';
 
 function ClickCounter({ count }) {
-    return <h1>{count}</h1>;
+    return <h1 className="mainCounter">{count}</h1>;
 }
 function MainButton({ onClick }) {
-    return <button onClick={onClick}>CLICK ME</button>;
+    return (
+        <button className="mainButton" onClick={onClick}>
+            CLICK ME
+        </button>
+    );
 }
 
 function Game() {
