@@ -21,14 +21,18 @@ function Game() {
             changeCount(count + 1);
         }
     };
-    const levelUp = (num) => {
-        changeLevel(num);
-    };
 
     return (
         <>
             <ClickCounter count={count} />
             <MainButton onClick={clickMath} />
+            <button
+                onClick={() => {
+                    changeLevel(level + 1);
+                }}
+            >
+                LEVEL
+            </button>
         </>
     );
 }
