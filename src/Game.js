@@ -1,32 +1,21 @@
 import { useState } from 'react';
 import './index.css';
 
-function ClickCounter({ count, style }) {
-    return (
-        <h1 style={style} className="mainCounter">
-            {count}
-        </h1>
-    );
-}
-function MainButton({ onClick }) {
-    return (
-        <button className="mainButton" onClick={onClick}>
-            CLICK ME
-        </button>
-    );
-}
+import ClickCounter from './modules/ClickCounter';
+import MainButton from './modules/MainButton';
+import StoreContainer from './modules/StoreContainer';
 
 function Game() {
     const [count, changeCount] = useState(0);
-    const [level, changeLevel] = useState(0);
+    const [level, changeLevel] = useState(1);
     const [storeStyle, changeStoreStyle] = useState({
         display: 'none',
         backgroundColor: 'red',
         color: 'blue',
     });
     const [storeScreenOpen, changeScreenOpen] = useState(false);
-
     console.log(storeStyle.style);
+
     const hideOrShow = (hideShow) => {
         if (hideShow === 'hide') {
             changeStoreStyle({ display: 'none' });
@@ -49,24 +38,30 @@ function Game() {
     };
 
     const clickMath = () => {
-        if (level === 0) {
-            changeCount(count + 1);
-        }
+        changeCount(count + level);
     };
 
     return (
         <>
             <div id="gameContainer">
-                <ClickCounter style={storeStyle} count={count} />
-                <MainButton onClick={clickMath} />
-                <button
-                    onClick={() => {
-                        changeLevel(level + 1);
-                    }}
-                >
-                    LEVEL
-                </button>
-                <button onClick={storeButtonLogic}>STORE</button>
+                <StoreContainer style={storeStyle} />
+                <ClickCounter count={count} />
+
+                <div id="buttonContainer">
+                    <button
+                        onClick={() => {
+                            changeLevel(level + 1);
+                        }}
+                    >
+                        LEVEL
+                    </button>
+
+                    <MainButton onClick={clickMath} />
+
+                    <button style={{ zIndex: '4' }} onClick={storeButtonLogic}>
+                        STORE
+                    </button>
+                </div>
             </div>
         </>
     );
