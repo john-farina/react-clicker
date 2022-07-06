@@ -21,6 +21,10 @@ function Game() {
             changeCount(count + 1);
         }
     };
+    const levelUp = (num) => {
+        changeLevel(num);
+    };
+    levelUp(0);
 
     return (
         <>
