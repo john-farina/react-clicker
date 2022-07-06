@@ -24,7 +24,6 @@ function Game() {
     const levelUp = (num) => {
         changeLevel(num);
     };
-    levelUp(0);
 
     return (
         <>
